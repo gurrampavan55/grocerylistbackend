@@ -140,15 +140,7 @@ function App() {
     const newQueue = [{ _id: tempId, text: newItemText }, ...queuedItems]
     setQueuedItems(newQueue)
     saveQueue(newQueue)
-
-    // attempt to sync now (will retry in background if fails)
-    try {
-      await checkAndSyncQueue()
-      setError(null)
-    } catch (err) {
-      setError('Failed to add item (will retry)')
-      console.error(err)
-    }
+    setError(null)
   }
 
   const deleteItem = async (id) => {
